@@ -1,14 +1,12 @@
-/* eslint-disable react/prop-types */
-// import { Button } from "flowbite-react";
+
 
 import Button from "./Button";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { app } from "../firebase";
-import { useDispatch } from "react-redux";
-//logout
 import { setCredentials } from "../redux/features/auth/authSlice";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
+import { getAuth } from 'your-auth-library'; 
+import { getAuth } from './utils/auth';
+
 const baseUrl = import.meta.env.VITE_BACKEND_BASE_URL;
 
 const OAuth = ({ title }) => {

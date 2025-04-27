@@ -1,24 +1,24 @@
-// this file I have added, will make use of it to modify task related calls with react query further
+
 
 import axios from "axios";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 const baseURL =
-  import.meta.env.VITE_BACKEND_BASE_URL || "http://localhost:3000";
+  import.meta.env.VITE_BACKEND_BASE_URL || "http://localhost:5000";
 
-// Axios instance
+
 const api = axios.create({
   baseURL: `${baseURL}/api/v1`,
   withCredentials: true,
 });
 
-// API calls
+
 export const getTasks = () =>
   api.get("/tasks").then((response) => response.data);
 export const createTask = (task) =>
   api.post("/tasks", task).then((response) => response.data);
 
-// React Query hooks
+
 export const useGetTasks = () =>
   useQuery({
     queryKey: ["tasks"],
@@ -48,7 +48,7 @@ export const useCreateTask = () => {
       queryClient.setQueryData(["tasks"], context.previousTasks);
     },
 
-    // onSuccess context variable
+
     onSuccess: (data, variables) => {
       queryClient.setQueryData(["tasks"], (old) =>
         old.map((task) =>
